@@ -12,6 +12,7 @@ branches contain patches, which are then merged into `main`.
 - [dragmfact](https://dwm.suckless.org/patches/dragmfact/)
 - [focusonclick](https://dwm.suckless.org/patches/focusonclick/)
 - [movestack](https://dwm.suckless.org/patches/movestack/)
+- [notitle](https://dwm.suckless.org/patches/notitle/)
 - [rainbowtags](https://dwm.suckless.org/patches/rainbowtags/)
 - [statuscolors](https://dwm.suckless.org/patches/statuscolors/)
 - [statuspadding](https://dwm.suckless.org/patches/statuspadding/)
