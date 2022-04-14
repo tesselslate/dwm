@@ -730,7 +730,7 @@ drawbar(Monitor *m)
 			if ((unsigned int)*ts > LENGTH(colors)) { ts++; continue ; }
 			ctmp = *ts;
 			*ts = '\0';
-			drw_text(drw, m->ww - tw + tx, 0, tw - tx, bh, 0, tp, 0);
+			drw_text(drw, m->ww - tw + tx, 0, tw - tx, bh, lrpad / 2, tp, 0);
 			tx += TEXTW(tp) -lrpad;
 			if (ctmp == '\0') { break; }
 			drw_setscheme(drw, scheme[(unsigned int)(ctmp-1)]);
@@ -1568,8 +1568,8 @@ setup(void)
 	drw = drw_create(dpy, screen, root, sw, sh, visual, depth, cmap);
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
-	lrpad = drw->fonts->h;
-	bh = drw->fonts->h + 2;
+	lrpad = drw->fonts->h + horizpadbar;
+	bh = drw->fonts->h + vertpadbar;
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
