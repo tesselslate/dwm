@@ -16,21 +16,53 @@ static const int focusonwheel       = 0;
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 6;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "JetBrains Mono:size=14" };
-static const char col_gray1[]       = "#24283b";
-static const char col_gray2[]       = "#292e42";
-static const char col_gray3[]       = "#545c7e";
-static const char col_gray4[]       = "#7e7aa2";
-static const char col_cyan[]        = "#89ddff";
-static const char col_green[]       = "#9ece6a";
-static const char col_black[]       = "#1f2335";
-static const char col_red[]         = "#f7768e";
-static const char col_yellow[]      = "#e0af68";
-static const char col_white[]       = "#c0caf5";
+
+static char termcol0[] = "#000000"; /* black   */
+static char termcol1[] = "#ff0000"; /* red     */
+static char termcol2[] = "#33ff00"; /* green   */
+static char termcol3[] = "#ff0099"; /* yellow  */
+static char termcol4[] = "#0066ff"; /* blue    */
+static char termcol5[] = "#cc00ff"; /* magenta */
+static char termcol6[] = "#00ffff"; /* cyan    */
+static char termcol7[] = "#d0d0d0"; /* white   */
+static char termcol8[]  = "#808080"; /* black   */
+static char termcol9[]  = "#ff0000"; /* red     */
+static char termcol10[] = "#33ff00"; /* green   */
+static char termcol11[] = "#ff0099"; /* yellow  */
+static char termcol12[] = "#0066ff"; /* blue    */
+static char termcol13[] = "#cc00ff"; /* magenta */
+static char termcol14[] = "#00ffff"; /* cyan    */
+static char termcol15[] = "#ffffff"; /* white   */
+static char *termcolor[] = {
+  termcol0,
+  termcol1,
+  termcol2,
+  termcol3,
+  termcol4,
+  termcol5,
+  termcol6,
+  termcol7,
+  termcol8,
+  termcol9,
+  termcol10,
+  termcol11,
+  termcol12,
+  termcol13,
+  termcol14,
+  termcol15,
+};
+
+static char normbgcolor[] = "#24283b";
+static char normbordercolor[] = "#292e42";
+static char normfgcolor[] = "#c0caf5";
+static char selbgcolor[] = "#292e42";
+static char selbordercolor[] = "#89ddff";
+static char selfgcolor[] = "#c0caf5";
 
 static const char *colors[][3]      = {
-	/*                    fg         bg          border   */
-	[SchemeNorm]    =   { col_white, col_gray1,  col_gray2 },
-	[SchemeSel]     =   { col_white, col_gray2,  col_cyan  },
+	/*               fg           bg           border   */
+    [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+    [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor },
 };
 
 static const unsigned int baralpha = 0xd0;
@@ -45,10 +77,10 @@ static const unsigned int alphas[][3]      = {
 /* tagging */
 static const char *tags[] = { "⛶", "⛶", "⛶", "⛶" };
 static const char *tagsel[][2] = {
-	{ col_red,      "#000000" },
-	{ col_yellow,   "#000000" },
-	{ col_cyan,     "#000000" },
-	{ col_green,    "#000000" },
+	{ termcol1, "#000000" },
+	{ termcol3, "#000000" },
+	{ termcol6, "#000000" },
+	{ termcol2, "#000000" },
 };
 
 static const unsigned int tagalpha[] = { OPAQUE, baralpha };
@@ -155,6 +187,9 @@ static Key keys[] = {
 
     // quit dwm
 	{ MODKEY|ShiftMask,             XK_q,       quit,           {0} },
+
+    // reload xresources
+	{ MODKEY,                       XK_F5,      xrdb,           {.v = NULL } },
 };
 
 /* button definitions */
