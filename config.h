@@ -3,7 +3,7 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -14,22 +14,23 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 4;        /* vertical padding for statusbar */
+static const int vertpadbar         = 6;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "JetBrains Mono:size=14" };
-static const char col_gray1[]       = "#6E6C7E";
-static const char col_gray2[]       = "#988BA2";
-static const char col_gray3[]       = "#C3BAC6";
-static const char col_gray4[]       = "#D9E0EE";
-static const char col_cyan[]        = "#89DCEB";
-static const char col_black[]       = "#1E1E2E";
-static const char col_red[]         = "#F28FAD";
-static const char col_yellow[]      = "#FAE3B0";
-static const char col_white[]       = "#EBF1FF";
+static const char col_gray1[]       = "#24283b";
+static const char col_gray2[]       = "#292e42";
+static const char col_gray3[]       = "#545c7e";
+static const char col_gray4[]       = "#7e7aa2";
+static const char col_cyan[]        = "#89ddff";
+static const char col_green[]       = "#9ece6a";
+static const char col_black[]       = "#1f2335";
+static const char col_red[]         = "#f7768e";
+static const char col_yellow[]      = "#e0af68";
+static const char col_white[]       = "#c0caf5";
 
 static const char *colors[][3]      = {
 	/*                    fg         bg          border   */
-	[SchemeNorm]    =   { col_gray3, col_gray1,  col_gray2 },
-	[SchemeSel]     =   { col_gray4, col_cyan,   col_cyan  },
+	[SchemeNorm]    =   { col_white, col_gray1,  col_gray2 },
+	[SchemeSel]     =   { col_white, col_gray2,  col_cyan  },
 	[SchemeWarn]    =	{ col_black, col_yellow, col_red },
 	[SchemeUrgent]  =	{ col_white, col_red,    col_red },
 };
@@ -44,18 +45,18 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "" };
+static const char *tags[] = { "⛶", "⛶", "⛶", "⛶" };
 static const char *tagsel[][2] = {
-	{ "#F28FAD", "#000000" },
-	{ "#FAE3B0", "#000000" },
-	{ "#ABE9B3", "#000000" },
-	{ "#89DCEB", "#000000" },
+	{ col_red,      "#000000" },
+	{ col_yellow,   "#000000" },
+	{ col_cyan,     "#000000" },
+	{ col_green,    "#000000" },
 };
 
 static const unsigned int tagalpha[] = { OPAQUE, baralpha };
 static const unsigned int ulinepad	= 6;	/* horizontal padding between the underline and tag */
-static const unsigned int ulinestroke	= 4;	/* thickness / height of the underline */
-static const unsigned int ulinevoffset	= 2;	/* how far above the bottom of the bar the line should appear */
+static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
+static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 static const Rule rules[] = {
@@ -87,22 +88,21 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/usr/bin/fish", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *menucmd[]  = { "rofi", "-show", "custom", "-modi", "'show:runmenu'" };
 static const char *termcmd[]  = { "kitty", NULL };
 
 /* custom funcs */
 static void fullscreen(const Arg *arg);
 
+/* keys */
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key         function        argument */
 
-    // menu
-	{ MODKEY,                       XK_Return,  spawn,          {.v = menucmd } },
-
     // terminal
 	{ MODKEY|ShiftMask,             XK_Return,  spawn,          {.v = termcmd } },
+
+    // menu
+	{ MODKEY,                       XK_Return,  spawn,          SHCMD("omnirun") },
 
     // lock
     { MODKEY,                       XK_l,       spawn,          SHCMD("lock") },
