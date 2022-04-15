@@ -96,7 +96,6 @@ static const Rule rules[] = {
 	 */
 	/* class        instance        title       tags    isfloating  monitor */
     { "Minecraft",  "Minecraft",    NULL,       0,      1,          -1 },
-    { NULL,         NULL,           NULL,       0,      0,      -1 },
 };
 
 /* layout(s) */
