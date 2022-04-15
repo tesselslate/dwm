@@ -11,6 +11,7 @@ branches contain patches, which are then merged into `main`.
 - [alpha](https://dwm.suckless.org/patches/alpha/)
 - [dragmfact](https://dwm.suckless.org/patches/dragmfact/)
 - [focusonclick](https://dwm.suckless.org/patches/focusonclick/)
+- [focusonnetactive](https://dwm.suckless.org/patches/focusonnetactive/)
 - [movestack](https://dwm.suckless.org/patches/movestack/)
 - [notitle](https://dwm.suckless.org/patches/notitle/)
 - [rainbowtags](https://dwm.suckless.org/patches/rainbowtags/)
