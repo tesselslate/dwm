@@ -14,8 +14,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 6;        /* vertical padding for statusbar */
-static const char *fonts[]          = { "JetBrains Mono:size=14" };
+static const int vertpadbar         = 10;        /* vertical padding for statusbar */
+static const char *fonts[]          = { "JetBrains Mono:size=12", "JetBrainsMono Nerd Font Mono:size=20" };
 
 static char termcol0[] = "#000000"; /* black   */
 static char termcol1[] = "#ff0000"; /* red     */
