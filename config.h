@@ -96,6 +96,7 @@ static const Rule rules[] = {
 	 */
 	/* class        instance        title       tags    isfloating  monitor */
     { "Minecraft",  "Minecraft",    NULL,       0,      1,          -1 },
+    { NULL,         NULL,           "Ninjabr",  0,      1,          -1 },
 };
 
 /* layout(s) */
@@ -129,67 +130,82 @@ static Key keys[] = {
 	/* modifier                     key         function        argument */
 
     // terminal
-	{ MODKEY|ShiftMask,             XK_Return,  spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return,                  spawn,          {.v = termcmd } },
 
     // menu
-	{ MODKEY,                       XK_Return,  spawn,          SHCMD("omnirun") },
+	{ MODKEY,                       XK_Return,                  spawn,          SHCMD("omnirun") },
 
     // lock
-    { MODKEY,                       XK_l,       spawn,          SHCMD("lock") },
+    { MODKEY|ShiftMask,             XK_l,                       spawn,          SHCMD("lock") },
 
     // fullscreen screenshot
-    { MODKEY,                       XK_Print,   spawn,          SHCMD("screenshot-clipboard") },
+    { MODKEY,                       XK_Print,                   spawn,          SHCMD("screenshot-clipboard") },
 
     // select screenshot
-    { MODKEY|ShiftMask,             XK_Print,   spawn,          SHCMD("screenshot-clipboard -s") },
+    { MODKEY|ShiftMask,             XK_Print,                   spawn,          SHCMD("screenshot-clipboard -s") },
 
     // lower volume
-    { 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },                 
+    { 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },                 
 
     // raise volume
-    { 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },                 
+    { 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },                 
+
+    // pause/play mpd
+    { 0,                            XF86XK_AudioPlay,           spawn,          SHCMD("mpc toggle") },
+
+    // next track in mpd
+    { 0,                            XF86XK_AudioNext,           spawn,          SHCMD("mpc next") },
+
+    // prev track in mpd
+    { 0,                            XF86XK_AudioPrev,           spawn,          SHCMD("mpc prev") },
 
     // focus next window
-	{ MODKEY,                       XK_j,       focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_j,                       focusstack,     {.i = +1 } },
 
     // focus prev window
-	{ MODKEY,                       XK_k,       focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_k,                       focusstack,     {.i = -1 } },
 
     // move window up stack
-	{ MODKEY|ShiftMask,             XK_j,       movestack,      {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,                       movestack,      {.i = -1 } },
 
     // move window down stack
-	{ MODKEY|ShiftMask,             XK_k,       movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,                       movestack,      {.i = +1 } },
 
     // increase master size
-	{ MODKEY,                       XK_h,       setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_h,                       setmfact,       {.f = -0.05} },
 
     // decrease master size
-	{ MODKEY,                       XK_l,       setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_l,                       setmfact,       {.f = +0.05} },
 
     // view next tag
-	{ MODKEY|ControlMask,           XK_Right,   viewnext,       {0} },
+	{ MODKEY|ControlMask,           XK_Right,                   viewnext,       {0} },
+
+    // view next tag
+    { MODKEY|ControlMask,           XK_l,                       viewnext,       {0} },
 
     // view previous tag
-	{ MODKEY|ControlMask,           XK_Left,    viewprev,       {0} },
+	{ MODKEY|ControlMask,           XK_Left,                    viewprev,       {0} },
+
+    // view previous tag
+	{ MODKEY|ControlMask,           XK_h,                       viewprev,       {0} },
 
     // move window to next tag
-	{ MODKEY|ShiftMask,             XK_Right,   tagtonext,      {0} },
+	{ MODKEY|ShiftMask,             XK_Right,                   tagtonext,      {0} },
 
     // move window to prev tag
-	{ MODKEY|ShiftMask,             XK_Left,    tagtoprev,      {0} },
+	{ MODKEY|ShiftMask,             XK_Left,                    tagtoprev,      {0} },
 
     // close window
-	{ MODKEY,                       XK_c,       killclient,     {0} },
+	{ MODKEY,                       XK_c,                       killclient,     {0} },
 
     // fullscreen window
-    { MODKEY,                       XK_f,       fullscreen,     {0} },
+    { MODKEY,                       XK_f,                       fullscreen,     {0} },
 
     // quit dwm
-	{ MODKEY|ShiftMask,             XK_q,       quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,                       quit,           {0} },
 
     // reload xresources
-	{ MODKEY,                       XK_F5,      xrdb,           {.v = NULL } },
+	{ MODKEY,                       XK_F5,                      xrdb,           {.v = NULL } },
 };
 
 /* button definitions */
