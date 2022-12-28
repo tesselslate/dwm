@@ -199,6 +199,12 @@ static Key keys[] = {
     // move window to prev tag
 	{ MODKEY|ShiftMask,             XK_Left,                    tagtoprev,      {0} },
 
+    // move window to next monitor
+	{ MODKEY|ShiftMask|ControlMask, XK_Right,                   tagnextmon,      {0} },
+
+    // move window to prev monitor
+	{ MODKEY|ShiftMask|ControlMask, XK_Left,                    tagprevmon,      {0} },
+
     // close window
 	{ MODKEY,                       XK_c,                       killclient,     {0} },
 
