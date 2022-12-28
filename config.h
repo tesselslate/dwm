@@ -127,10 +127,13 @@ static void fullscreen(const Arg *arg);
 /* keys */
 #include "movestack.c"
 static Key keys[] = {
-	/* modifier                     key         function        argument */
+    /* modifier                     key         function        argument */
+
+    // layout switch
+    { MODKEY,                       XK_space,                   spawn,          SHCMD("switch-keymap") },
 
     // terminal
-	{ MODKEY|ShiftMask,             XK_Return,                  spawn,          {.v = termcmd } },
+    { MODKEY|ShiftMask,             XK_Return,                  spawn,          {.v = termcmd } },
 
     // menu
 	{ MODKEY,                       XK_Return,                  spawn,          SHCMD("omnirun") },
