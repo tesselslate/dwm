@@ -194,10 +194,10 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_h,                       viewprev,       {0} },
 
     // next monitor
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_comma,                   focusmon,       {.i = -1 } },
 
     // prev monitor
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY,                       XK_period,                  focusmon,       {.i = +1 } },
 
     // move window to next tag
 	{ MODKEY|ShiftMask,             XK_Right,                   tagtonext,      {0} },
@@ -206,10 +206,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Left,                    tagtoprev,      {0} },
 
     // move window to next monitor
-	{ MODKEY|ShiftMask|ControlMask, XK_Right,                   tagnextmon,      {0} },
+	{ MODKEY|ShiftMask,             XK_comma,                   tagnextmon,      {0} },
 
     // move window to prev monitor
-	{ MODKEY|ShiftMask|ControlMask, XK_Left,                    tagprevmon,      {0} },
+	{ MODKEY|ShiftMask,             XK_period,                  tagprevmon,      {0} },
 
     // close window
 	{ MODKEY,                       XK_c,                       killclient,     {0} },
