@@ -237,6 +237,9 @@ static void tag(const Arg *arg);
 static void tagtonext(const Arg *arg);
 static void tagtoprev(const Arg *arg);
 static void tagmon(const Arg *arg);
+static void tagnextmon(const Arg *arg);
+static void tagprevmon(const Arg *arg);
+static void tagothermon(const Arg *arg, int dir);
 static void tile(Monitor *m);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
@@ -1898,6 +1901,36 @@ tagtoprev(const Arg *arg)
 	tmp = prevtag();
 	tag(&(const Arg){.ui = tmp });
 	view(&(const Arg){.ui = tmp });
+}
+
+void
+tagnextmon(const Arg *arg)
+{
+	tagothermon(arg, 1);
+}
+
+void
+tagprevmon(const Arg *arg)
+{
+	tagothermon(arg, -1);
+}
+
+void
+tagothermon(const Arg *arg, int dir)
+{
+	Client *sel;
+	Monitor *newmon;
+
+	if (!selmon->sel || !mons->next)
+		return;
+	sel = selmon->sel;
+	newmon = dirtomon(dir);
+	sendmon(sel, newmon);
+	if (arg->ui & TAGMASK) {
+		sel->tags = arg->ui & TAGMASK;
+		focus(NULL);
+		arrange(newmon);
+	}
 }
 
 void
