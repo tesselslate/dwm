@@ -193,6 +193,12 @@ static Key keys[] = {
     // view previous tag
 	{ MODKEY|ControlMask,           XK_h,                       viewprev,       {0} },
 
+    // next monitor
+	{ MODKEY|ControlMask,           XK_comma,  focusmon,       {.i = -1 } },
+
+    // prev monitor
+	{ MODKEY|ControlMask,           XK_period, focusmon,       {.i = +1 } },
+
     // move window to next tag
 	{ MODKEY|ShiftMask,             XK_Right,                   tagtonext,      {0} },
 

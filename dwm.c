@@ -190,6 +190,7 @@ static void enternotify(XEvent *e);
 static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
+static void focusmon(const Arg *arg);
 static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
 static int getrootptr(int *x, int *y);
@@ -958,6 +959,20 @@ focusin(XEvent *e)
 
 	if (selmon->sel && ev->window != selmon->sel->win)
 		setfocus(selmon->sel);
+}
+
+void
+focusmon(const Arg *arg)
+{
+    Monitor *m;
+
+    if (!mons->next)
+        return;
+    if ((m = dirtomon(arg->i)) == selmon)
+        return;
+    unfocus(selmon->sel, 0);
+    selmon = m;
+    focus(NULL);
 }
 
 void
