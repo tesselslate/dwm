@@ -126,6 +126,7 @@ static void fullscreen(const Arg *arg);
 
 /* keys */
 #include "movestack.c"
+#include "unfloat.c"
 static Key keys[] = {
     /* modifier                     key         function        argument */
 
@@ -203,6 +204,9 @@ static Key keys[] = {
 
     // fullscreen window
     { MODKEY,                       XK_f,                       fullscreen,     {0} },
+
+    // unfloat visible
+    { MODKEY|ShiftMask,             XK_f,                       unfloatvisible, {0} },
 
     // quit dwm
 	{ MODKEY|ShiftMask,             XK_q,                       quit,           {0} },
