@@ -119,7 +119,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/usr/bin/fish", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[]  = { "kitty", NULL };
+static const char *termcmd[]  = { "wezterm", NULL };
 
 /* custom funcs */
 static void fullscreen(const Arg *arg);
@@ -130,29 +130,26 @@ static void fullscreen(const Arg *arg);
 static Key keys[] = {
     /* modifier                     key         function        argument */
 
-    // layout switch
-    { MODKEY,                       XK_space,                   spawn,          SHCMD("switch-keymap") },
-
     // terminal
     { MODKEY|ShiftMask,             XK_Return,                  spawn,          {.v = termcmd } },
 
     // menu
-	{ MODKEY,                       XK_Return,                  spawn,          SHCMD("omnirun") },
+	{ MODKEY,                       XK_Return,                  spawn,          SHCMD("menu") },
 
     // lock
     { MODKEY|ShiftMask,             XK_l,                       spawn,          SHCMD("lock") },
 
     // fullscreen screenshot
-    { MODKEY,                       XK_Print,                   spawn,          SHCMD("screenshot-clipboard") },
+    { MODKEY,                       XK_Print,                   spawn,          SHCMD("screenshot-clipboard -g 1920x1080+0+0") },
 
     // select screenshot
     { MODKEY|ShiftMask,             XK_Print,                   spawn,          SHCMD("screenshot-clipboard -s") },
 
     // lower volume
-    { 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },                 
+    { 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
 
     // raise volume
-    { 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },                 
+    { 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
 
     // pause/play mpd
     { 0,                            XF86XK_AudioPlay,           spawn,          SHCMD("mpc toggle") },
