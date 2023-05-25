@@ -119,7 +119,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/usr/bin/fish", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[]  = { "wezterm", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 
 /* custom funcs */
 static void fullscreen(const Arg *arg);
